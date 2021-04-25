@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/surveys', [\App\Http\Controllers\SurveyController::class,'index']);
+Route::post('/surveys', [\App\Http\Controllers\SurveyController::class, 'store']);
+Route::get('/surveys/{survey}', [\App\Http\Controllers\SurveyController::class,'show']);
+Route::post('/surveys/{survey}/questions', [\App\Http\Controllers\QuestionController::class, 'store']);
+Route::post('/surveys/{survey}/take', [\App\Http\Controllers\SurveyController::class, 'take']);
